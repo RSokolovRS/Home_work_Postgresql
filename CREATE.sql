@@ -11,13 +11,15 @@ CREATE TABLE IF NOT EXISTS albums (
 	name VARCHAR(120) NOT NULL,
 	year_of_issur DATE check(year_of_issur >= '2018-01-01'),
 	unique(year_of_issur));
+
 	
-CREATE TABLE IF NOT EXISTS jenres_executors (
+CREATE TABLE IF NOT EXISTS jenres_executors_albums (
 	id_jenre INTEGER REFERENCES jenres(id_jenre),
 	id_executor INTEGER REFERENCES executors(id_executor),
 	CONSTRAINT pk1_id PRIMARY KEY (id_jenre, id_executor));
 
-	CREATE TABLE IF NOT EXISTS executors_albums (
+	
+CREATE TABLE IF NOT EXISTS executors_albums (
 	id_executor INTEGER REFERENCES executors(id_executor),
 	id_album INTEGER REFERENCES albums(id_album),
 	CONSTRAINT pk2_id PRIMARY KEY (id_executor, id_album));
@@ -25,10 +27,11 @@ CREATE TABLE IF NOT EXISTS jenres_executors (
 CREATE TABLE IF NOT EXISTS traks (
 	id_trak SERIAL PRIMARY KEY,
 	name VARCHAR(80) NOT null,
-	time_trak INTEGER,
+	time_trak TIME,
 	id_album INTEGER NOT NULL REFERENCES albums(id_album));
-	
-CREATE TABLE IF NOT EXISTS collection (
+
+
+	CREATE TABLE IF NOT EXISTS collection (
 	id_collection SERIAL PRIMARY KEY,
 	name VARCHAR(100) NOT NULL,
 	year_of_issur DATE UNIQUE,
