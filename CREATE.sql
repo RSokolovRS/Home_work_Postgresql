@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS albums (
 	unique(year_of_issur));
 
 	
-CREATE TABLE IF NOT EXISTS jenres_executors_albums (
+CREATE TABLE IF NOT EXISTS jenres_executors (
 	id_jenre INTEGER REFERENCES jenres(id_jenre),
 	id_executor INTEGER REFERENCES executors(id_executor),
 	CONSTRAINT pk1_id PRIMARY KEY (id_jenre, id_executor));

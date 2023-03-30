@@ -77,8 +77,8 @@ JOIN executors_albums ea  ON a.id_album = ea.id_album
 JOIN executors e  ON ea.id_executor = e.id_executor 
 JOIN jenres_executors je ON e.id_executor = je.id_executor
 JOIN jenres  j ON j.id_jenre = je.id_jenre 
-GROUP BY a.name 
-HAVING count(j.id_jenre) > 1;
+GROUP BY a.name, je.id_executor 
+HAVING count(j.id_jenre) > 1
 ORDER BY a.name;
 
 -- 7. Наименования треков, которые не входят в сборники.
